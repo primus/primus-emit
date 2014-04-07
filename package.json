@@ -1,0 +1,34 @@
+{
+  "name": "primus-emit",
+  "version": "0.0.0",
+  "description": "Emit events over your primus connection.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha $(find test -name '*.test.js')"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/primus/emit"
+  },
+  "keywords": [
+    "emitter",
+    "eventemitter",
+    "primus",
+    "emit",
+    "events",
+    "event"
+  ],
+  "author": "Arnout Kazemier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/primus/emit/issues"
+  },
+  "homepage": "https://github.com/primus/emit",
+  "devDependencies": {
+    "primus": "*",
+    "ws": "*",
+    "pre-commit": "0.0.x",
+    "chai": "1.9.x",
+    "mocha": "1.18.x"
+  }
+}
