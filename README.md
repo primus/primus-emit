@@ -110,6 +110,33 @@ primus.on('foo', function (bar) {
 });
 ```
 
+## FAQ
+
+### How is different than `primus-emitter`
+
+There are a couple of differences between this module and the `primus-emitter`
+module. The only similarity that they have is that they both emit events. The
+main differences are:
+
+1. **method name** The `primus-emitter` module adds a special `send` method to
+   the prototypes while we re-use the `emit` method. This makes the code much
+   more portable as it uses the same method name node's EventEmitter.
+2. **Focus** This module only focuses on one thing, emitting events. The
+   `primus-emitter` ships with a lot more features that are not needed for
+   emitting events.
+3. **Small** The footprint of this module is really small. The whole code base is
+   only 80 lines of code including comments. We use the bare minimal code in
+   order to work. This makes maintenance a lot easier.
+
+### Why was this module created
+
+This module was written as part of the plugin documentation for Primus. Writing
+an EventEmitter was the ideal use case as it:
+
+- Uses the Primus message transformation for message interception.
+- Extends the client and server.
+- Is small enough to understand.
+
 ## License
 
 MIT
