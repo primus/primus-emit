@@ -1,4 +1,4 @@
-# Emit
+# Emit [![Build Status](https://travis-ci.org/primus/emit.png?branch=master)](https://travis-ci.org/primus/emit) [![NPM version](https://badge.fury.io/js/primus-emit.png)](http://badge.fury.io/js/primus-emit)
 
 The `emit` module adds `client->server` and `server->client` event emitting to
 Primus.
