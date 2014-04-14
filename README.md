@@ -31,7 +31,7 @@ Now that the server and Primus instance has been created we can add the plugin
 with the server. Adding plugins is done with the `primus.use` method:
 
 ```js
-primus.user('emit', require('primus-emit'));
+primus.use('emit', require('primus-emit'));
 ```
 
 And that is everything that you need. The module doesn't require any
