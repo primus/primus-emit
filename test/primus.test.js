@@ -69,6 +69,22 @@ describe('emit', function () {
       var socket = new Socket('http://localhost:'+ port);
       socket.emit('foo');
     });
+
+    it('doesnt die when we do a regular write', function (next) {
+      server.on('connection', function (spark) {
+        spark.on('data', function (msg) {
+          if (msg === 'foo') next();
+        });
+      });
+
+      var socket = new Socket('http://localhost:'+ port);
+
+      socket.write({ object: 'works' });
+      socket.write([ 'array', 'works' ]);
+      socket.write('string works');
+      socket.write(1);
+      socket.write('foo');
+    });
   });
 
   describe('client', function () {
@@ -116,6 +132,23 @@ describe('emit', function () {
         expect(this).to.equal(socket);
 
         next();
+      });
+
+    });
+
+    it('doesnt die when we do a regular write', function (next) {
+      server.on('connection', function (spark) {
+        spark.write({ object: 'works' });
+        spark.write([ 'array', 'works' ]);
+        spark.write('string works');
+        spark.write(1);
+        spark.write('foo');
+      });
+
+      var socket = new Socket('http://localhost:'+ port);
+
+      socket.on('data', function (msg) {
+        if (msg === 'foo') next();
       });
     });
   });

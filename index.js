@@ -14,7 +14,7 @@ exports.client = function client(primus) {
 
     if (
          'object' !== typeof data     // Events are objects.
-      && !data.emit                   // Not an emit object.
+      || !data.emit                   // Not an emit object.
     ) {
       return;
     }
@@ -56,7 +56,7 @@ exports.server = function server(primus) {
 
     if (
          'object' !== typeof data     // Events are objects.
-      && !data.emit                   // Not an emit object.
+      || !data.emit                   // Not an emit object.
     ) {
       return;
     }
