@@ -7,14 +7,15 @@
  * @api public
  */
 exports.client = function client(primus) {
-  var emit = primus.emit;
+  var toString = Object.prototype.toString
+    , emit = primus.emit;
 
   primus.transform('incoming', function incoming(packet) {
     var data = packet.data;
 
     if (
-         'object' !== typeof data     // Events are objects.
-      || !data.emit                   // Not an emit object.
+         'object' !== typeof data                       // Events are objects.
+      || !~toString.call(data.emit).indexOf(' Array]')  // Not an emit object.
     ) {
       return;
     }
@@ -56,7 +57,7 @@ exports.server = function server(primus) {
 
     if (
          'object' !== typeof data     // Events are objects.
-      || !data.emit                   // Not an emit object.
+      || !Array.isArray(data.emit)    // Not an emit object.
     ) {
       return;
     }
