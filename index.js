@@ -25,7 +25,7 @@ exports.client = function client(primus) {
     // We use our previously saved `emit` function to emit the event so we
     // prevent recursion and message flood.
     //
-    if (!this.reserved[data.emit[0]]) emit.apply(primus, data.emit);
+    if (!this.reserved(data.emit[0])) emit.apply(primus, data.emit);
 
     return false;
   });
@@ -67,7 +67,7 @@ exports.server = function server(primus) {
     // We use our previously saved `emit` function to emit the event so we
     // prevent recursion and message flood.
     //
-    if (!this.reserved[data.emit[0]]) emit.apply(this, data.emit);
+    if (!this.reserved(data.emit[0])) emit.apply(this, data.emit);
 
     return false;
   });
