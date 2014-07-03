@@ -1,10 +1,8 @@
 describe('emit', function () {
   'use strict';
 
-  var chai = require('chai')
-    , expect = chai.expect;
-
   var server, Socket, http, port = 1024
+    , assume = require('assume')
     , Primus = require('primus')
     , emit = require('../');
 
@@ -35,18 +33,18 @@ describe('emit', function () {
     it('receives arguments', function (next) {
       server.on('connection', function (spark) {
         spark.on('foo', function (a, b, c, d) {
-          expect(a).to.be.a('number');
-          expect(a).to.equal(1);
+          assume(a).to.be.a('number');
+          assume(a).to.equal(1);
 
-          expect(b).to.be.a('string');
-          expect(b).to.equal('foo');
+          assume(b).to.be.a('string');
+          assume(b).to.equal('foo');
 
-          expect(c).to.be.a('object');
-          expect(c.bar).to.equal('moo');
+          assume(c).to.be.a('object');
+          assume(c.bar).to.equal('moo');
 
-          expect(d).to.be.a('array');
-          expect(d.length).to.equal(1);
-          expect(d[0]).to.equal(1);
+          assume(d).to.be.a('array');
+          assume(d.length).to.equal(1);
+          assume(d[0]).to.equal(1);
 
           next();
         });
@@ -59,8 +57,8 @@ describe('emit', function () {
     it('has the correct context', function (next) {
       server.on('connection', function (spark) {
         spark.on('foo', function () {
-          expect(arguments.length).to.equal(0);
-          expect(this).to.equal(spark);
+          assume(arguments.length).to.equal(0);
+          assume(this).to.equal(spark);
 
           next();
         });
@@ -104,18 +102,18 @@ describe('emit', function () {
 
       var socket = new Socket('http://localhost:'+ port);
       socket.on('foo', function (a, b, c, d) {
-        expect(a).to.be.a('number');
-        expect(a).to.equal(1);
+        assume(a).to.be.a('number');
+        assume(a).to.equal(1);
 
-        expect(b).to.be.a('string');
-        expect(b).to.equal('foo');
+        assume(b).to.be.a('string');
+        assume(b).to.equal('foo');
 
-        expect(c).to.be.a('object');
-        expect(c.bar).to.equal('moo');
+        assume(c).to.be.a('object');
+        assume(c.bar).to.equal('moo');
 
-        expect(d).to.be.a('array');
-        expect(d.length).to.equal(1);
-        expect(d[0]).to.equal(1);
+        assume(d).to.be.a('array');
+        assume(d.length).to.equal(1);
+        assume(d[0]).to.equal(1);
 
         next();
       });
@@ -128,8 +126,8 @@ describe('emit', function () {
 
       var socket = new Socket('http://localhost:'+ port);
       socket.on('foo', function () {
-        expect(arguments.length).to.equal(0);
-        expect(this).to.equal(socket);
+        assume(arguments.length).to.equal(0);
+        assume(this).to.equal(socket);
 
         next();
       });
