@@ -28,6 +28,13 @@ describe('broadcast', function () {
       socket.emit('foo');
     });
 
+    it('also receives the data event globally', function (next) {
+      server.on('data', function () { next (); });
+
+      var socket = new Socket('http://localhost:'+ port);
+      socket.write('foo');
+    });
+
     it('receives arguments', function (next) {
       server.on('foo', function (spark, a, b, c, d) {
         assume(spark).to.be.instanceOf(server.Spark);

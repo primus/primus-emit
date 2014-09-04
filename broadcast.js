@@ -17,6 +17,7 @@ exports.server = function server(primus) {
          'object' !== typeof data     // Events are objects.
       || !Array.isArray(data.emit)    // Not an emit object.
     ) {
+      primus.emit.apply(primus, ['data'].concat(data));
       return;
     }
 
