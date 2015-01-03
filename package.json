@@ -28,8 +28,8 @@
   "homepage": "https://github.com/primus/primus-emit",
   "devDependencies": {
     "assume": "0.0.x",
-    "istanbul": "0.3.2",
-    "mocha": "2.0.x",
+    "istanbul": "0.3.x",
+    "mocha": "2.1.x",
     "pre-commit": "0.0.x",
     "primus": "*",
     "ws": "*"
