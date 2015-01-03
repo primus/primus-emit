@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/primus/emit"
+    "url": "https://github.com/primus/primus-emit"
   },
   "keywords": [
     "emitter",
@@ -23,9 +23,9 @@
   "author": "Arnout Kazemier",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/primus/emit/issues"
+    "url": "https://github.com/primus/primus-emit/issues"
   },
-  "homepage": "https://github.com/primus/emit",
+  "homepage": "https://github.com/primus/primus-emit",
   "devDependencies": {
     "assume": "0.0.x",
     "istanbul": "0.3.2",
