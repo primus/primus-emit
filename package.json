@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/primus/primus-emit",
   "devDependencies": {
-    "assume": "1.0.x",
+    "assume": "1.1.x",
     "mocha": "2.1.x",
     "pre-commit": "0.0.x",
     "primus": "*",
