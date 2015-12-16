@@ -14,7 +14,8 @@ exports.client = function client(primus) {
     var data = packet.data;
 
     if (
-         'object' !== typeof data                       // Events are objects.
+         this !== primus                                // Incorrect context.
+      || 'object' !== typeof data                       // Events are objects.
       || !~toString.call(data.emit).indexOf(' Array]')  // Not an emit object.
     ) {
       return;
@@ -56,7 +57,8 @@ exports.server = function server(primus) {
     var data = packet.data;
 
     if (
-         'object' !== typeof data     // Events are objects.
+         !(this instanceof Spark)     // Incorrect context.
+      || 'object' !== typeof data     // Events are objects.
       || !Array.isArray(data.emit)    // Not an emit object.
     ) {
       return;
