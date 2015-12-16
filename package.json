@@ -28,7 +28,7 @@
     "assume": "1.3.x",
     "mocha": "2.3.x",
     "pre-commit": "1.1.x",
-    "primus": "3.2.x",
+    "primus": "4.0.x",
     "ws": "0.8.x"
   }
 }
