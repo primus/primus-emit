@@ -13,6 +13,8 @@ exports.server = function server(primus) {
   primus.transform('incoming', function incoming(packet) {
     var data = packet.data;
 
+    if (!(this instanceof Spark)) return;
+
     if (
          'object' !== typeof data     // Events are objects.
       || !Array.isArray(data.emit)    // Not an emit object.

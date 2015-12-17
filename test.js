@@ -2,6 +2,7 @@ describe('emit', function () {
   'use strict';
 
   var server, Socket, http, port = 1024
+    , EE = require('events').EventEmitter
     , assume = require('assume')
     , Primus = require('primus')
     , emit = require('./');
@@ -68,7 +69,7 @@ describe('emit', function () {
       socket.emit('foo');
     });
 
-    it('doesnt die when we do a regular write', function (next) {
+    it('doesn\'t die when we do a regular write', function (next) {
       server.on('connection', function (spark) {
         spark.on('data', function (msg) {
           if (msg === 'foo') next();
@@ -134,7 +135,7 @@ describe('emit', function () {
 
     });
 
-    it('doesnt die when we do a regular write', function (next) {
+    it('doesn\'t die when we do a regular write', function (next) {
       server.on('connection', function (spark) {
         spark.write({ object: 'works' });
         spark.write([ 'array', 'works' ]);
@@ -150,12 +151,31 @@ describe('emit', function () {
       });
     });
   });
+
+  describe('incoming message transformer', function () {
+    it('bails out if called with a wrong `this` value (server)', function (next) {
+      server.on('connection', function (spark) {
+        spark.transforms(server, new EE(), 'incoming', { emit: ['foo'] });
+        next();
+      });
+
+      new Socket('http://localhost:'+ port);
+    });
+
+    it('bails out if called with a wrong `this` value (client)', function (next) {
+      var socket = new Socket('http://localhost:'+ port);
+
+      socket.transforms(socket, new EE(), 'incoming', { emit: ['foo'] });
+      next();
+    });
+  });
 });
 
 describe('broadcast', function () {
   'use strict';
 
   var server, Socket, http, port = 1024
+    , EE = require('events').EventEmitter
     , emit = require('./broadcast')
     , assume = require('assume')
     , Primus = require('primus');
@@ -237,6 +257,25 @@ describe('broadcast', function () {
 
       var socket = new Socket('http://localhost:'+ port);
       socket.write(1);
+    });
+  });
+
+  describe('incoming message transformer', function () {
+    it('bails out if called with a wrong `this` value', function (next) {
+      server.on('data', function () {
+        next();
+      });
+
+      server.on('foo', function () {
+        next();
+      });
+
+      server.on('connection', function (spark) {
+        spark.transforms(server, new EE(), 'incoming', { emit: ['foo'] });
+        next();
+      });
+
+      new Socket('http://localhost:'+ port);
     });
   });
 });
