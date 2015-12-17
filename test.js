@@ -165,8 +165,10 @@ describe('emit', function () {
     it('bails out if called with a wrong `this` value (client)', function (next) {
       var socket = new Socket('http://localhost:'+ port);
 
-      socket.transforms(socket, new EE(), 'incoming', { emit: ['foo'] });
-      next();
+      socket.on('open', function () {
+        socket.transforms(socket, new EE(), 'incoming', { emit: ['foo'] });
+        next();
+      });
     });
   });
 });
