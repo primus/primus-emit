@@ -1,4 +1,4 @@
-# Emit
+# primus-emit
 
 [![Version npm](https://img.shields.io/npm/v/primus-emit.svg?style=flat-square)](http://browsenpm.org/package/primus-emit)[![Build Status](https://img.shields.io/travis/primus/primus-emit/master.svg?style=flat-square)](https://travis-ci.org/primus/primus-emit)[![Dependencies](https://img.shields.io/david/primus/primus-emit.svg?style=flat-square)](https://david-dm.org/primus/primus-emit)[![Coverage Status](https://img.shields.io/coveralls/primus/primus-emit/master.svg?style=flat-square)](https://coveralls.io/r/primus/primus-emit?branch=master)[![IRC channel](https://img.shields.io/badge/IRC-irc.freenode.net%23primus-00a8ff.svg?style=flat-square)](https://webchat.freenode.net/?channels=primus)
 
