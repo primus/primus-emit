@@ -60,7 +60,7 @@ To emit an event from the server to the client you can simply call the `emit`
 method:
 
 ```js
-primus.on('connection', funciton connection(spark) {
+primus.on('connection', function connection(spark) {
   spark.emit('event-name', 'arguments');
 
   //
