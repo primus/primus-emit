@@ -1,6 +1,6 @@
 {
   "name": "primus-emit",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Emit events over your primus connection.",
   "main": "index.js",
   "scripts": {
