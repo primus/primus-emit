@@ -50,7 +50,7 @@ There are a couple exceptions on the events that you can emit between the server
 and client. We automatically blacklist reserved event names. This ensures that
 you cannot accidentally emit the `end` event on the client and close the
 connection on the server etc. The blacklisted events are all events that are
-prefixed with `incomming:` and `outgoing:` as they are used by Primus internally
+prefixed with `incoming:` and `outgoing:` as they are used by Primus internally
 and all events client or server emits. See https://github.com/primus/primus#events
 for an overview of all events that are emitted by Primus.
 
