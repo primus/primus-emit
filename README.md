@@ -30,10 +30,10 @@ var Primus = require('primus')
 ```
 
 Now that the server and Primus instance has been created we can add the plugin
-with the server. Adding plugins is done with the `primus.use` method:
+with the server. Adding plugins is done with the `primus.plugin` method:
 
 ```js
-primus.use('emit', require('primus-emit'));
+primus.plugin('emit', require('primus-emit'));
 ```
 
 And that is everything that you need. The module doesn't require any
@@ -141,4 +141,4 @@ an EventEmitter was the ideal use case as it:
 
 ## License
 
-MIT
+[MIT](LICENSE)
