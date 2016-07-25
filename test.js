@@ -11,7 +11,7 @@ describe('emit', function () {
     http = require('http').createServer();
     server = new Primus(http);
 
-    server.use('emit', emit);
+    server.plugin('emit', emit);
     Socket = server.Socket;
 
     http.listen(++port, next);
@@ -186,7 +186,7 @@ describe('broadcast', function () {
     http = require('http').createServer();
     server = new Primus(http);
 
-    server.use('broadcast', emit);
+    server.plugin('broadcast', emit);
     Socket = server.Socket;
 
     http.listen(++port, next);
