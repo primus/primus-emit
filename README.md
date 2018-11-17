@@ -64,7 +64,7 @@ primus.on('connection', function connection(spark) {
   spark.emit('event-name', 'arguments');
 
   //
-  // To receive events, simply add a listenern for it.
+  // To receive events, simply add a listener for it.
   //
   spark.on('custom-event', function custom(data, another, arg) {
     assert.equal(data.foo, 'foo');
